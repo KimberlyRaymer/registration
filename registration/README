@@ -1,5 +1,0 @@
-Registration is a webpage that allows users participating in the Soybean convention to fill out their personal 
-information, poster information (if have one), and then pay through paypal. They may do this as a group or as a 
-single registrant. If group registration then group registrants will be submitted under one JSON object, 
-"registrantForms". Under registrantForms each registrant will be labeled as "registrant{number}" with "{number}" 
-being filled with their assigned index in accordance to the registrant counter (regCount()).
