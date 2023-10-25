@@ -1,0 +1,237 @@
+<!-- @author Kimberly Raymer -->
+<!-- This html file is where the user can see the registrants who filled out (for group registration) -->
+<!-- Then can pay through paypal -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="r_function.js" defer></script>
+    <title>Payment Page</title>
+    <script>
+
+      //load when document opens
+      window.onload = function () {
+        payPage();
+
+        //the user has not clicked on paypal
+        if (localStorage.getItem("regType") != null) {
+          setLoadData("goBackBttn", "true");
+        }
+      }
+    </script>
+
+
+</head>
+<body>
+    <header>
+        Payment Page
+    </header>
+    <div class="container">
+        <table class="form" id="payTable">
+          <tr>
+              <td>
+                  <h2>Registrants</h2>
+              </td>
+          </tr>
+          <tr>
+              <td></td>
+          </tr>
+          <tr>
+            <td>
+
+              <!------------------------------------------------------ Single Price Selections (early then late) ------------------------------------------------------>
+
+              <!-- Div container for early student/post-doc - single price selection -->
+              <div id="earlyStudentPostSelection">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_s-xclick" />
+                  <input type="hidden" name="hosted_button_id" value="4HLLLAKFPWVK8" />
+                  <input type="hidden" name="currency_code" value="USD" /> 
+                  <input onclick="payPalClicked()" type="image" src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/Full_Online_Tray_RGB.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Buy Now" /> 
+                </form>
+              </div>
+
+              <!-- Div container for late student/post-doc - single price selection -->
+              <div id="lateStudentPostSelection" >
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_s-xclick" />
+                  <input type="hidden" name="hosted_button_id" value="EFSWKVYR4KBAA" />
+                  <input type="hidden" name="currency_code" value="USD" /> 
+                  <input onclick="payPalClicked()" type="image" src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/Full_Online_Tray_RGB.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Buy Now" />
+                </form>
+              </div>
+              
+              <!-- Div container for early professional - single price selection -->
+              <div id="earlyProfessionalSelection">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_s-xclick" />
+                  <input type="hidden" name="hosted_button_id" value="B5UTQBAD24EH6" />
+                  <input type="hidden" name="currency_code" value="USD" /> 
+                  <input onclick="payPalClicked()" type="image" src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/Full_Online_Tray_RGB.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Buy Now" />
+                </form> 
+              </div>
+
+              <!-- Div container for late professional - single price selection -->
+              <div id="lateProfessionalSelection">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_s-xclick" /> 
+                  <input type="hidden" name="hosted_button_id" value="JS5FWEPAJRYZS" />
+                  <input type="hidden" name="currency_code" value="USD" /> 
+                  <input onclick="payPalClicked()" type="image" src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/Full_Online_Tray_RGB.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Buy Now" />
+                </form>
+              </div>
+
+
+              <!------------------------------------------------------ Group Price Selections (early then late) ------------------------------------------------------>
+
+
+              <!-- Div container for early student/post-doc price - group selection -->
+              <div id="earlyStudentPostSelectionGroup">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"> 
+                  <input type="hidden" name="cmd" value="_s-xclick" /> 
+                  <input type="hidden" name="hosted_button_id" value="L8DTHQSS9FHUC" /> 
+                  <table> 
+                    <tr> 
+                      <td> 
+                        <h3>Choose the Number of Registration Fees</h3> 
+                      </td> 
+                    </tr> 
+                    <tr> 
+                      <td> 
+                        <select name="os0"> 
+                          <option value="1"> 1 $125.00 USD </option> 
+                          <option value="2"> 2 $250.00 USD </option> 
+                          <option value="3"> 3 $375.00 USD </option> 
+                          <option value="4"> 4 $500.00 USD </option> 
+                          <option value="5"> 5 $625.00 USD </option> 
+                          <option value="6"> 6 $750.00 USD </option> 
+                          <option value="7"> 7 $875.00 USD </option> 
+                          <option value="8"> 8 $1,000.00 USD </option> 
+                          <option value="9"> 9 $1,125.00 USD </option> 
+                          <option value="10"> 10 $1,250.00 USD </option> 
+                        </select> 
+                      </td> 
+                    </tr> 
+                  </table> 
+                  <h3>Click the PayPal Button Below to Pay</h3>
+                  <input type="hidden" name="currency_code" value="USD" /> 
+                  <input onclick="payPalClicked()" type="image" src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/Full_Online_Tray_RGB.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Buy Now" /> 
+                </form>
+              </div>
+    
+              <!-- Div container for late student/post-doc - group price selection -->
+              <div id="lateStudentPostSelectionGroup">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_s-xclick" />
+                  <input type="hidden" name="hosted_button_id" value="XJXGHN3NCGS2S" /> 
+                    <table> 
+                      <tr> 
+                        <td> 
+                          <h3>Choose the Number of Registration Fees</h3> 
+                        </td> 
+                        </tr> 
+                        <tr>
+                          <td> 
+                            <select name="os0">
+                              <option value="1"> 1 $150.00 USD </option>
+                              <option value="2"> 2 $300.00 USD </option>
+                              <option value="3"> 3 $450.00 USD </option>
+                              <option value="4"> 4 $600.00 USD </option>
+                              <option value="5"> 5 $750.00 USD </option>
+                              <option value="6"> 6 $900.00 USD </option>
+                              <option value="7"> 7 $1,050.00 USD </option>
+                              <option value="8"> 8 $1,200.00 USD </option>
+                              <option value="9"> 9 $1,350.00 USD </option>
+                              <option value="10"> 10 $1,500.00 USD </option>
+                            </select>
+                          </td> 
+                        </tr>
+                    </table>
+                    <h3>Click the PayPal Button Below to Pay</h3>
+                    <input type="hidden" name="currency_code" value="USD" /> 
+                    <input onclick="payPalClicked()" type="image" src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/Full_Online_Tray_RGB.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Buy Now" /> 
+                  </form>
+              </div>
+    
+              <!-- Div container for early professional - group price selection -->
+              <div id="earlyProfessionalSelectionGroup">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_s-xclick" />
+                  <input type="hidden" name="hosted_button_id" value="ZK8FA8L2U284Q" /> 
+                  <table> 
+                    <tr> 
+                      <td>
+                        <h3>Choose the Number of Registration Fees</h3> 
+                      </td>
+                    </tr> 
+                    <tr> 
+                      <td>
+                        <select name="os0">
+                          <option value="1"> 1 $200.00 USD </option>
+                          <option value="2"> 2 $400.00 USD </option>
+                          <option value="3"> 3 $600.00 USD </option>
+                          <option value="4"> 4 $800.00 USD </option>
+                          <option value="5"> 5 $1,000.00 USD </option>
+                          <option value="6"> 6 $1,200.00 USD </option>
+                          <option value="7"> 7 $1,400.00 USD </option>
+                          <option value="8"> 8 $1,600.00 USD </option>
+                          <option value="9"> 9 $1,800.00 USD </option>
+                          <option value="10"> 10 $2,000.00 USD </option>
+                        </select>
+                      </td>
+                    </tr>
+                  </table>
+                  <h3>Click the PayPal Button Below to Pay</h3>
+                  <input type="hidden" name="currency_code" value="USD" /> 
+                  <input onclick="payPalClicked()" type="image" src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/Full_Online_Tray_RGB.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Buy Now" /> 
+                </form>
+              </div>
+    
+              <!-- Div container for late professional - group price selection -->
+              <div id="lateProfessionalSelectionGroup">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_s-xclick" />
+                  <input type="hidden" name="hosted_button_id" value="HN8P9JJEFPEHQ" />
+                  <table>
+                    <tr>
+                      <td>
+                        <h3>Choose the Number of Registration Fees</h3> 
+                      </tr>
+                      <tr>
+                        <td>
+                          <select name="os0">
+                            <option value="1"> 1 $225.00 USD </option>
+                            <option value="2"> 2 $450.00 USD </option>
+                            <option value="3"> 3 $675.00 USD </option>
+                            <option value="4"> 4 $900.00 USD </option>
+                            <option value="5"> 5 $1,125.00 USD </option>
+                            <option value="6"> 6 $1,350.00 USD </option>
+                            <option value="7"> 7 $1,575.00 USD </option> 
+                            <option value="8"> 8 $1,800.00 USD </option>
+                            <option value="9"> 9 $2,025.00 USD </option> 
+                            <option value="10"> 10 $2,250.00 USD </option> 
+                          </select>
+                        </td>
+                    </tr>
+                  </table>
+                  <h3>Click the PayPal Button Below to Pay</h3>
+                  <input type="hidden" name="currency_code" value="USD" /> 
+                  <input onclick="payPalClicked()" type="image" src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/Full_Online_Tray_RGB.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Buy Now" /> 
+                </form>
+              </div>
+
+            </td>
+          </tr>
+        </table>
+
+      <div class="form">
+        <button onclick="return submitRegistrants()" class="submitBttnColor" type="submit" id="paySubmitBttn">Submit</button>
+        <a href="registration.html"><input class="clearBttnColor" id="goBackBttn" value="Go Back"></a>
+      </div>
+
+    </div>
+</body>
+</html>
