@@ -418,7 +418,7 @@ function submitRegistrants() {
     const request = new XMLHttpRequest();
 
 //------------------------------------------------------------------REPLACE: "http://foo.com/submitform.php" with link of choosing-----------------------------------------------------------------
-    request.open("POST", "http://foo.com/submitform.php");
+    request.open("POST", " https://soybase.org/SBW/registration3/updatedb2.php");
     request.send(forms);
 
     localStorage.clear();
